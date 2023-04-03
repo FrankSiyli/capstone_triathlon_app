@@ -9,6 +9,7 @@ export default function HomePage() {
       <Header/>
       <WeekCard/>
       <FooterButton href="/weeklyOverview" title="Create Plan" rel="noopener noreferrer"></FooterButton>      
+    
     </div>
   );
 }
