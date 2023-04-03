@@ -2,37 +2,37 @@
 "days": [
     {
     "id": 1,
-    "title": "monday",
+    "title": "Monday",
     "isToggled": true
 },
 {
     "id": 2,
-    "title": "tuesday",
-    "isToggled": true
+    "title": "Tuesday",
+    "isToggled": false
 },
 {
     "id": 3,
-    "title": "wednesday",
+    "title": "Wednesday",
     "isToggled": true
 },
 {
     "id": 4,
-    "title": "thursday",
+    "title": "Thursday",
     "isToggled": true
 },
 {
     "id": 5,
-    "title": "friday",
+    "title": "Friday",
     "isToggled": true
 },
 {
     "id": 6,
-    "title": "saturday",
+    "title": "Saturday",
     "isToggled": true
 },
 {
     "id": 7,
-    "title": "sunday",
+    "title": "Sunday",
     "isToggled": true
 }
 ]},
