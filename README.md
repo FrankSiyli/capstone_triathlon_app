@@ -1,9 +1,11 @@
 # Capstone Project Triathlon-App
 
-This project was created from the neue fische next template.
+
 ![capstone_starter](https://user-images.githubusercontent.com/123658730/229460872-263c248d-43b4-4d80-b709-7400c0d6f0e4.png)
 
 ## Development
+
+# Tech Stack:React, NEXT.js, Kanban, SCRUM
 
 ### CodeSandbox
 
