@@ -5,7 +5,7 @@
 
 ## Development
 
-# Tech Stack:React, NEXT.js, Kanban, SCRUM
+### Tech Stack:React, NEXT.js, Kanban, SCRUM
 
 ### CodeSandbox
 
