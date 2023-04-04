@@ -1,37 +1,24 @@
 import useSWR from "swr";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const fetcher = async url => {
-  const res = await fetch(url)
+
+const fetcher = async (url) => {
+  const res = await fetch(url);
   if (!res.ok) {
-    const error = new Error('An error occurred while fetching the data.') 
-    error.info = await res.json()
-    error.status = res.status
-    throw error
+    const error = new Error("An error occurred while fetching the data.");
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
   }
-  return res.json()
-}
+  return res.json();
+};
 
-export default function WeekCard () {
-
-  const { data, error } = useSWR("/api/db", fetcher);
-  const [days, setDays] = useState([]);
-
-  if (error) return <div>Failed to load data</div>;
-  if (!data) return <div>loading training days...</div>;
-
-  if (days.length === 0) {
-    setDays(data[0].days);
-  }
+export default function WeekCard ({ days }) {
+  const [selectedDays, setSelectedDays] = useState([]);
 
   const toggleDay = (id) => {
-    setDays((chosenDays) =>
-      chosenDays.map((day) => {
-        if (day.id === id) {
-          return { ...day, isToggled: !day.isToggled };
-        }
-        return day;
-      })
+    setSelectedDays((prev) =>
+      prev.includes(id) ? prev.filter((day) => day !== id) : [...prev, id]
     );
   };
 
@@ -43,7 +30,7 @@ export default function WeekCard () {
           <div key={day.id}>
             <h3>{day.title}</h3>
             <button onClick={() => toggleDay(day.id)}>
-              {day.isToggled ? "✅" : "❌"}
+              {selectedDays.includes(day.id) ? "✅" : "❌"}
             </button>
           </div>
         ))}
