@@ -1,9 +1,13 @@
-import React from 'react'
+import FooterButton from "../src/components/Button/FooterButton";
 
-const weeklyOverview = () => {
+export default function weeklyOverview () {
   return (
-    <div>weeklyOverview</div>
+    <>
+    weeklyOverview
+
+
+    <FooterButton href="/" title="Back"></FooterButton>
+    </>
   )
 }
 
-export default weeklyOverview
