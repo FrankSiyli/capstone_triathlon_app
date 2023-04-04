@@ -6,8 +6,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <Header/>
-      <WeekCard/>
+      
       <FooterButton href="/weeklyOverview" title="Create Plan" rel="noopener noreferrer"></FooterButton>      
     
     </div>
