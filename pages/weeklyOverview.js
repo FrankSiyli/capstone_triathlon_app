@@ -1,11 +1,9 @@
-import FooterButton from "../src/components/Button/FooterButton";
-import WeekCard from "../src/components/WeekCard/WeekCard";
+import React from 'react'
 
-export default function WeeklyOverview({ days, toggleDay }) {
+const weeklyOverview = () => {
   return (
-    <>
-      <WeekCard />
-      <FooterButton href="/" title="Back"/>
-    </>
-  );
+    <div>weeklyOverview</div>
+  )
 }
+
+export default weeklyOverview
