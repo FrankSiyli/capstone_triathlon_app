@@ -1,13 +1,11 @@
 import FooterButton from "../src/components/Button/FooterButton";
+import WeekCard from "../src/components/WeekCard/WeekCard";
 
-export default function weeklyOverview () {
+export default function WeeklyOverview({ days, toggleDay }) {
   return (
     <>
-    weeklyOverview
-
-
-    <FooterButton href="/" title="Back"></FooterButton>
+      <WeekCard />
+      <FooterButton href="/" title="Back"/>
     </>
-  )
+  );
 }
-
