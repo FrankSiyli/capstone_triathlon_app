@@ -1,9 +1,9 @@
-import React from 'react'
 
-const weeklyOverview = () => {
+export default function weeklyOverview ()  {
   return (
-    <div>weeklyOverview</div>
+    <>
+    weeklyOverview
+    </>
   )
 }
 
-export default weeklyOverview
