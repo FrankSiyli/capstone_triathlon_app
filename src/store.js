@@ -1,17 +1,17 @@
 import create from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 const useStore = create(
   persist(
     (set, get) => ({
       days: [
-        { id: 1, title: "Monday", added: false },
-        { id: 2, title: "Tuesday", added: false },
-        { id: 3, title: "Wednesday", added: false },
-        { id: 4, title: "Thursday", added: false },
-        { id: 5, title: "Friday", added: false },
-        { id: 6, title: "Saturday", added: false },
-        { id: 7, title: "Sunday", added: false },
+        { id: 1, title: "Monday", added: true },
+        { id: 2, title: "Tuesday", added: true },
+        { id: 3, title: "Wednesday", added: true },
+        { id: 4, title: "Thursday", added: true },
+        { id: 5, title: "Friday", added: true },
+        { id: 6, title: "Saturday", added: true },
+        { id: 7, title: "Sunday", added: true },
       ],
       toggleDay: (dayId) => {
         set((state) => {

@@ -1,14 +1,19 @@
-import React from "react";
 import FooterButton from "../src/components/Button/FooterButton";
-import Days from "../src/components/Days/Days";
+import useStore from "../src/store";
 
 function AddedDaysPage() {
+  const { days } = useStore();
+  const addedDays = days.filter((day) => day.added);
   return (
-    <div>
-      <h1>Your Training Days</h1>
-      <Days filtered={true} />
-      <FooterButton href="/" title="Back" rel="noopener noreferrer" />
-    </div>
+    <>
+      <div>
+        <h2>Your Training Days</h2>
+        {addedDays.map((day) => (
+          <p key={day.id}>{day.title}</p>
+        ))}
+        <FooterButton href="/" title="Back" rel="noopener noreferrer" />
+      </div>
+    </>
   );
 }
 

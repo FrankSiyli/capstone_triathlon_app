@@ -13,7 +13,6 @@ export default function Days({ filtered }) {
 
   return (
     <>
-      <h3>Choose your training days</h3>
       {days.map((day) => {
         return (
           <div key={day.id}>
