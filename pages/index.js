@@ -1,15 +1,16 @@
 import FooterButton from "../src/components/Button/FooterButton";
-import Header from "../src/components/Header/Header";
-import WeekCard from "../src/components/WeekCard/WeekCard";
+import Days from "../src/components/Days/Days";
 
 export default function HomePage() {
-
   return (
     <div>
-      <Header/>
-      <WeekCard/>
-      <FooterButton href="/weeklyOverview" title="Create Plan" rel="noopener noreferrer"></FooterButton>      
-    
+      <h2>Choose your training days</h2>
+      <Days />
+      <FooterButton
+        href="/addedDaysPage"
+        title="Create Plan"
+        rel="noopener noreferrer"
+      />
     </div>
   );
 }
