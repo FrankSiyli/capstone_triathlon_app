@@ -26,8 +26,8 @@ const useStore = create(
       },
     }),
     {
-      name: "days-storage", // name of the local storage key
-      getStorage: () => localStorage, // storage API to use
+      name: "days-storage",
+      getStorage: () => localStorage,
     }
   )
 );
