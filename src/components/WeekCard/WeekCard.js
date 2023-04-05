@@ -1,14 +1,33 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function WeekCard({ days }) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* export default function WeekCard({ days }) {
+  
   const [selectedDays, setSelectedDays] = useState([]);
 
-  const toggleDay = (id) => {
-    setSelectedDays((prevDays) =>
-      prevDays.includes(id)
-        ? prevDays.filter((dayId) => dayId !== id)
-        : [...prevDays, id]
-    );
+  const handleDayToggle = (dayId) => {
+    if (selectedDays.includes(dayId)) {
+      setSelectedDays(selectedDays.filter((id) => id !== dayId));
+    } else {
+      setSelectedDays([...selectedDays, dayId]);
+    } console.log(selectedDays.id);
   };
 
   return (
@@ -18,12 +37,18 @@ export default function WeekCard({ days }) {
         {days && days.map((day) => (
           <div key={day.id}>
             <h3>{day.title}</h3>
-            <button onClick={() => toggleDay(day.id)}>
-              {selectedDays.includes(day.id) ? "✅" : "❌"}
-            </button>
+            <button
+                onClick={() => handleDayToggle(day.id)}
+              >
+                {selectedDays.includes(day.id) ? "✅" : "❌"}
+              </button>
           </div>
         ))}
       </div>
     </>
   );
 }
+
+ */
+
+
