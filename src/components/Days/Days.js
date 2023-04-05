@@ -7,7 +7,7 @@ export default function Days() {
 
   return (
     <>
-      <p>we have {days.length} days</p>
+      <h3>Choose your training days</h3>
       {days.map((day) => {
         return (
           <div key={day.id}>
