@@ -36,7 +36,7 @@ function AddedDaysPage() {
             </select>
           </div>
         ))}
-        <FooterButton href="/" title="Back" rel="noopener noreferrer" />
+        <FooterButton href="/" title="Back" />
       </div>
     </>
   );
