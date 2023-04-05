@@ -1,14 +1,14 @@
 import FooterButton from "../src/components/Button/FooterButton";
-import Header from "../src/components/Header/Header";
-import WeekCard from "../src/components/WeekCard/WeekCard";
-
+import Days from "../src/components/Days/Days";
 export default function HomePage() {
-
   return (
     <div>
-      
-      <FooterButton href="/weeklyOverview" title="Create Plan" rel="noopener noreferrer"></FooterButton>      
-    
+      <Days />
+      <FooterButton
+        href="/weeklyOverview"
+        title="Create Plan"
+        rel="noopener noreferrer"
+      ></FooterButton>
     </div>
   );
 }
