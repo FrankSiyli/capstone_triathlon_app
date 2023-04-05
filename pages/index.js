@@ -9,7 +9,7 @@ export default function HomePage() {
         href="/addedDaysPage"
         title="Create Plan"
         rel="noopener noreferrer"
-      ></FooterButton>
+      />
     </div>
   );
 }
