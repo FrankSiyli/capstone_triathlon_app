@@ -1,5 +1,5 @@
 import React from "react";
-import useStore from "../../store";
+import useStore from "../../../pages/dayStore";
 
 export default function Days({ filtered }) {
   const days = useStore((state) => {
