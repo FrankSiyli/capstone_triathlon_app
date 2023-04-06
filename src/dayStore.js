@@ -13,6 +13,7 @@ const useStore = create(
         { id: 6, title: "Saturday", added: true },
         { id: 7, title: "Sunday", added: true },
       ],
+
       toggleDay: (dayId) => {
         set((state) => {
           const dayIndex = state.days.findIndex((day) => day.id === dayId);
