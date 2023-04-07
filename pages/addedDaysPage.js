@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import FooterButton from "../src/components/Button/FooterButton";
-import useStore from "./dayStore";
+import useStore from "../store/store";
 
-function AddedDaysPage() {
+export default function AddedDaysPage() {
   const { days } = useStore();
   const addedDays = days.filter((day) => day.added);
   const [randomTitle, setRandomTitle] = useState("");
@@ -30,5 +30,3 @@ function AddedDaysPage() {
     </>
   );
 }
-
-export default AddedDaysPage;
