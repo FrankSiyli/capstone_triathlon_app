@@ -18,7 +18,7 @@ export default function Days({ filtered }) {
           <div key={day.id}>
             <p>{day.title}</p>
             <button onClick={() => toggleDay(day.id)}>
-              {day.added ? "✅ " : "❌"}
+              {day.added ? "selected" : "not selected"}
             </button>
           </div>
         );
