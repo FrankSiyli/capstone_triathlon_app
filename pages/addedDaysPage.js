@@ -1,47 +1,39 @@
-import React, { useState } from "react";
 import FooterButton from "../src/components/Button/FooterButton";
-import useStore from "../store/store";
+import useStore from "../src/store";
 
-export default function AddedDaysPage() {
-  const { days, sessions } = useStore();
+function AddedDaysPage() {
+  const { days } = useStore();
   const addedDays = days.filter((day) => day.added);
-  const [randomTitles, setRandomTitles] = useState({});
 
-  const handleRandomTitles = () => {
-    const newRandomTitles = {};
-    const usedIndexes = []; // to prevent duplicate titles for a day
-    addedDays.forEach((day) => {
-      let randomIndex1, randomIndex2;
-      do {
-        randomIndex1 = Math.floor(Math.random() * sessions.length);
-      } while (usedIndexes.includes(randomIndex1));
-      usedIndexes.push(randomIndex1);
-
-      do {
-        randomIndex2 = Math.floor(Math.random() * sessions.length);
-      } while (usedIndexes.includes(randomIndex2));
-      usedIndexes.push(randomIndex2);
-
-      newRandomTitles[day.id] = [
-        sessions[randomIndex1].title,
-        sessions[randomIndex2].title,
-      ];
-    });
-    setRandomTitles(newRandomTitles);
+  const handleDropdownChange = (event, dayId) => {
+    const selectedOption = event.target.value;
   };
 
   return (
     <>
-      <button id="lalala" onClick={handleRandomTitles}>
-        lalala
-      </button>
-
       <div>
+        <h2>Your Training Days</h2>
         {addedDays.map((day) => (
           <div key={day.id}>
             <h3>{day.title}</h3>
-            <p>{randomTitles[day.id][0]}</p>
-            <p>{randomTitles[day.id][1]}</p>
+            <select onChange={(event) => handleDropdownChange(event, day.id)}>
+              <option value="option1">
+                <span
+                  role="button"
+                  onClick={(event) => handleDropdownChange(event, day.id)}
+                >
+                  🍔
+                </span>
+              </option>
+              <option value="option2">
+                <span
+                  role="button"
+                  onClick={(event) => handleDropdownChange(event, day.id)}
+                >
+                  🍔
+                </span>
+              </option>
+            </select>
           </div>
         ))}
         <FooterButton href="/" title="Back" />
@@ -49,3 +41,5 @@ export default function AddedDaysPage() {
     </>
   );
 }
+
+export default AddedDaysPage;
