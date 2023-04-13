@@ -22,6 +22,7 @@ function AddedDaysPage() {
   const addedDays = days.filter((day) => day.added);
   const [daySessions, setDaySessions] = useState({});
   const [showSessions, setShowSessions] = useState({});
+  const [showDetails, setShowDetails] = useState({});
   const toggleSessions = (dayId) => {
     if (!daySessions[dayId]) {
       const [firstSession, secondSession] = getTwoRandomSessions(sessions);
@@ -30,9 +31,16 @@ function AddedDaysPage() {
         [dayId]: [firstSession, secondSession],
       }));
     }
-    setShowSessions((prevState) => ({
-      ...prevState,
-      [dayId]: !prevState[dayId],
+    setShowSessions((previousState) => ({
+      ...previousState,
+      [dayId]: !previousState[dayId],
+    }));
+  };
+
+  const toggleDetails = (dayId, sessionTitle) => {
+    setShowDetails((previousState) => ({
+      ...previousState,
+      [dayId + sessionTitle]: !previousState[dayId + sessionTitle],
     }));
   };
 
@@ -54,7 +62,15 @@ function AddedDaysPage() {
                   <li key={session.title}>
                     <span>{session.icon}</span>
                     {session.title}
-                    <button>☰</button>
+                    <button
+                      id="detailsButton"
+                      onClick={() => toggleDetails(day.id, session.title)}
+                    >
+                      {showDetails[day.id + session.title] ? "x" : "☰"}
+                    </button>
+                    {showDetails[day.id + session.title] && (
+                      <p>{session.details}</p>
+                    )}
                   </li>
                 ))}
               </ul>
