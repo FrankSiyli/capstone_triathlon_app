@@ -22,7 +22,7 @@ const useStore = create(
           backgroundColor: "blue",
           icon: "🌊",
           details:
-            "Warm Up: 200m @ 70% \n  ---------------------------- \n Active: 2x500m/50m @ 95%/85% \n  ---------------------------- \n Cool Down: 200m @ 80%",
+            "Warm Up: 200m @ 70% \n  ---------------------------------- \n Active: 2x500m/50m @ 95%/85% \n  ---------------------------------- \n Cool Down: 200m @ 80%",
         },
         {
           type: "swim",
@@ -32,7 +32,7 @@ const useStore = create(
           backgroundColor: "blue",
           icon: "🌊",
           details:
-            "Warm Up: 200m @ 70% \n  ---------------------------- \n Active: 3x500m/50m @ 95%/85% \n  ---------------------------- \n Cool Down: 200m @ 80%",
+            "Warm Up: 200m @ 70% \n  ---------------------------------- \n Active: 3x500m/50m @ 95%/85% \n  ---------------------------------- \n Cool Down: 200m @ 80%",
         },
         {
           type: "swim",
@@ -42,7 +42,67 @@ const useStore = create(
           backgroundColor: "blue",
           icon: "🌊",
           details:
-            "Warm Up: 200m @ 70% \n  ---------------------------- \n Active: 4x500m/50m @ 95%/85% \n  ---------------------------- \n Cool Down: 200m @ 80%",
+            "Warm Up: 200m @ 70% \n  ---------------------------------- \n Active: 4x500m/50m @ 95%/85% \n  ---------------------------------- \n Cool Down: 200m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "2x1000m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 400m @ 70% \n  ---------------------------------- \n Active: 2x1000m/100m @ 95%/85% \n  ---------------------------------- \n Cool Down: 400m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "3x1000m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 400m @ 70% \n  ---------------------------------- \n Active: 3x1000m/100m @ 95%/85% \n  ---------------------------------- \n Cool Down: 400m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "4x1000m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 400m @ 70% \n  ---------------------------------- \n Active: 4x1000m/100m @ 95%/85% \n  ---------------------------------- \n Cool Down: 400m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "long",
+          title: "2x1500m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 600m @ 70% \n  ---------------------------------- \n Active: 2x1500m/150m @ 95%/85% \n  ---------------------------------- \n Cool Down: 600m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "long",
+          title: "3x1500m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 600m @ 70% \n  ---------------------------------- \n Active: 3x1500m/150m @ 95%/85% \n  ---------------------------------- \n Cool Down: 600m @ 80%",
+        },
+        {
+          type: "swim",
+          subType: "interval",
+          eventDistance: "long",
+          title: "4x1500m",
+          backgroundColor: "blue",
+          icon: "🌊",
+          details:
+            "Warm Up: 600m @ 70% \n  ---------------------------------- \n Active: 4x1500m/150m @ 95%/85% \n  ---------------------------------- \n Cool Down: 600m @ 80%",
         },
         {
           type: "bike",
@@ -52,7 +112,7 @@ const useStore = create(
           backgroundColor: "green",
           icon: "🚴‍♂️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 3x5km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 3x5km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
         },
         {
           type: "bike",
@@ -62,7 +122,7 @@ const useStore = create(
           backgroundColor: "green",
           icon: "🚴‍♂️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 4x5km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 4x5km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
         },
         {
           type: "bike",
@@ -72,7 +132,67 @@ const useStore = create(
           backgroundColor: "green",
           icon: "🚴‍♂️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 5x5km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 5x5km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "3x10km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 20km @ 70% \n  ---------------------------------- \n Active: 3x10km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 20km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "4x10km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 20km @ 70% \n  ---------------------------------- \n Active: 4x10km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 20km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "5x10km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 20km @ 70% \n  ---------------------------------- \n Active: 5x10km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 20km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "long",
+          title: "3x15km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 3x15km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "long",
+          title: "4x15km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 4x15km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
+        },
+        {
+          type: "bike",
+          subType: "interval",
+          eventDistance: "long",
+          title: "5x15km",
+          backgroundColor: "green",
+          icon: "🚴‍♂️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 5x15km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
         },
         {
           type: "run",
@@ -82,7 +202,7 @@ const useStore = create(
           backgroundColor: "orange",
           icon: "🏃‍♀️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 3x1km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 3x1km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
         },
         {
           type: "run",
@@ -92,7 +212,7 @@ const useStore = create(
           backgroundColor: "orange",
           icon: "🏃‍♀️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 4x1km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 4x1km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
         },
         {
           type: "run",
@@ -102,7 +222,67 @@ const useStore = create(
           backgroundColor: "orange",
           icon: "🏃‍♀️",
           details:
-            "Warm Up: 10km @ 70% \n  ---------------------------- \n Active: 5x1km/1km @ 95%/85% \n  ---------------------------- \n Cool Down: 10km @ 80%",
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 5x1km/1km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "3x2km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 3x2km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "4x2km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 4x2km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "mid",
+          title: "5x2km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 10km @ 70% \n  ---------------------------------- \n Active: 5x2km/2km @ 95%/85% \n  ---------------------------------- \n Cool Down: 10km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "long",
+          title: "3x3km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 3x3km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "long",
+          title: "4x3km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 4x3km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
+        },
+        {
+          type: "run",
+          subType: "interval",
+          eventDistance: "long",
+          title: "5x3km",
+          backgroundColor: "orange",
+          icon: "🏃‍♀️",
+          details:
+            "Warm Up: 30km @ 70% \n  ---------------------------------- \n Active: 5x3km/3km @ 95%/85% \n  ---------------------------------- \n Cool Down: 30km @ 80%",
         },
 
         {
@@ -113,7 +293,7 @@ const useStore = create(
           backgroundColor: "grey",
           icon: "🏋️‍♀️",
           details:
-            "Setu Bandhasana \n 2 min \n 10x sit-ups \n Utkatasana \n 1 min \n 10x push ups \n Adho Mukha Svanasana\n 1 min \n 10x squats ",
+            "Setu Bandhasana \n 2 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats ",
         },
         {
           type: "stabilization",
@@ -123,7 +303,7 @@ const useStore = create(
           backgroundColor: "grey",
           icon: "🏋️‍♀️",
           details:
-            "Chakravakasana \n 1 min \n 10x squats \n Utkatasana \n 1 min \n 10x sit-ups \n Chakravakasana \n 1 min \n 10x squats \n Utkatasana \n 1 min \n 10x sit-ups",
+            "Chakravakasana \n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Chakravakasana \n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x sit-ups",
         },
         {
           type: "stabilization",
@@ -133,7 +313,7 @@ const useStore = create(
           backgroundColor: "grey",
           icon: "🏋️‍♀️",
           details:
-            "Utkatasana \n 1 min \n 10x push ups \n Adho Mukha Svanasana\n 1 min \n 10x squats \n Utkatasana \n 1 min \n 10x push ups \n Adho Mukha Svanasana\n 1 min \n 10x squats",
+            "Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats",
         },
       ],
 
