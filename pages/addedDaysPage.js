@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FooterButton from "../src/components/Button/FooterButton";
+import FooterButton from "../src/components/FooterButton/";
 import useStore from "../src/store";
 
 const getTwoRandomSessions = (sessions) => {
