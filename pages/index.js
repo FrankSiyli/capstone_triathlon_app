@@ -1,5 +1,5 @@
-import FooterButton from "../src/components/Button/FooterButton";
-import Days from "../src/components/Days/Days";
+import FooterButton from "../src/components/FooterButton";
+import Days from "../src/components/Days";
 
 export default function HomePage() {
   return (
