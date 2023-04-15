@@ -2,6 +2,7 @@ import FooterButton from "../src/components/FooterButton";
 import Days from "../src/components/Days";
 import { useState } from "react";
 import { sessions } from "../src/sessionsDb";
+import Link from "next/link";
 
 export default function HomePage() {
   const [activeButton, setActiveButton] = useState("");
@@ -52,15 +53,13 @@ export default function HomePage() {
       </button> */}
       <h2>Choose your training days</h2>
       <Days />
-      <button
-        
+      <Link
         href="/addedDaysPage"
         title="Create Plan"
-        rel="noopener noreferrer"
         onClick={handleCreatePlan}
-      ><a href="/addedDaysPage">Create Plan</a>
-        
-      </button>
+      >
+        Create Plan
+      </Link>
     </div>
   );
 }
