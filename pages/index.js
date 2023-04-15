@@ -1,62 +1,59 @@
-import FooterButton from "../src/components/FooterButton";
 import Days from "../src/components/Days";
-import { useState } from "react";
-import { sessions } from "../src/sessionsDb";
 import Link from "next/link";
+import useStore from "../src/store";
+import { useEffect } from "react";
 
 export default function HomePage() {
-  const [activeButton, setActiveButton] = useState("");
-  const [selectedSessions, setSelectedSessions] = useState([]);
+  const { days, toggleDay, sessions } = useStore();
+  const addedDays = days.filter((day) => day.added);
+  useEffect(() => {
+    generateSessionsForDays(addedDays, sessions);
+  });
 
-  const handleButtonClick = (event) => {
-    const value = event.target.value;
-    setActiveButton(value);
-  };
+  useEffect(() => {
+    addedDays.forEach((day) => {
+      if (!day.sessions.length) {
+        toggleDay(day.id);
+      }
+    });
+  }, [addedDays, toggleDay]);
+  function handleCreatePlanClick() {
+    generateSessionsForDays(addedDays, sessions);
+  }
 
-  const getTwoRandomSessions = () => {
-    const randomSessions = sessions.map(
-      () => sessions[Math.floor(Math.random() * sessions.length)]
-    );
-    const firstSession = { ...randomSessions[0] };
-    const remainingSessions = randomSessions.filter(
-      (session) => session.type !== firstSession.type
-    );
-    const secondSession = {
-      ...remainingSessions[
-        Math.floor(Math.random() * remainingSessions.length)
-      ],
-    };
-    return [firstSession, secondSession];
-  };
+  function generateSessionsForDays(days, sessions) {
+    days.forEach((day) => {
+      if (!day.added) {
+        day.sessions = [];
+      } else {
+        const remainingSessions = sessions.filter(
+          (session) =>
+            session.type !== day.type && !day.sessions.includes(session)
+        );
 
-  const handleCreatePlan = () => {
-    const [firstSession, secondSession] = getTwoRandomSessions();
-    console.log("create plan");
-    localStorage.setItem("firstSession", JSON.stringify(firstSession));
-    localStorage.setItem("secondSession", JSON.stringify(secondSession));
-  };
+        const selectedSessions = [];
+        for (let i = 0; i < 2; i++) {
+          const randomIndex = Math.floor(
+            Math.random() * remainingSessions.length
+          );
+          const session = remainingSessions[randomIndex];
+          selectedSessions.push(session);
+          remainingSessions.splice(randomIndex, 1);
+        }
+
+        day.sessions = selectedSessions;
+      }
+    });
+  }
 
   return (
     <div>
-      <h2>Choose your event distance</h2>
-      {/* <h3>Short Distance Tri</h3>
-      <button value="short" onClick={handleButtonClick}>
-        {activeButton === "short" ? "active" : "not active"}
-      </button>
-      <h3>Middle Distance Tri</h3>
-      <button value="mid" onClick={handleButtonClick}>
-        {activeButton === "mid" ? "active" : "not active"}
-      </button>
-      <h3> Long Distance Tri</h3>
-      <button value="long" onClick={handleButtonClick}>
-        {activeButton === "long" ? "active" : "not active"}
-      </button> */}
       <h2>Choose your training days</h2>
       <Days />
       <Link
         href="/addedDaysPage"
         title="Create Plan"
-        onClick={handleCreatePlan}
+        onClick={handleCreatePlanClick}
       >
         Create Plan
       </Link>
