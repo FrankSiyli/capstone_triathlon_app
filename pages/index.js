@@ -105,7 +105,7 @@ export default function HomePage() {
         </label>
       </form>
       <h2>Choose your training days</h2>
-      <Days filtered={true} onToggle={handleDayToggle} />
+      <Days onToggle={handleDayToggle} />
 
       <Link
         href="/addedDaysPage"
