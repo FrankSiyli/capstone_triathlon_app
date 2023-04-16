@@ -4,9 +4,9 @@ import useStore from "../src/store";
 import { useState, useEffect } from "react";
 
 export default function HomePage() {
-  const [selectedType, setSelectedType] = useState("short");
-  const { days, toggleDay, sessions } = useStore();
+  const { days, toggleDay, sessions, selectedSession } = useStore();
   const addedDays = days.filter((day) => day.added);
+
   useEffect(() => {
     generateSessionsForDays(addedDays, sessions);
   });
@@ -18,11 +18,9 @@ export default function HomePage() {
       }
     });
   }, [addedDays, toggleDay]);
+
   function handleCreatePlanClick() {
     generateSessionsForDays(addedDays, sessions);
-  }
-  function handleTypeChange(e) {
-    setSelectedType(e.target.value);
   }
 
   function generateSessionsForDays(days, sessions) {
@@ -32,7 +30,9 @@ export default function HomePage() {
       } else {
         const remainingSessions = sessions.filter(
           (session) =>
-            session.type !== day.type && !day.sessions.includes(session)
+            session.eventDistance === selectedType &&
+            session.type !== day.type &&
+            !day.sessions.includes(session)
         );
 
         const selectedSessions = [];
@@ -50,51 +50,56 @@ export default function HomePage() {
     });
   }
 
+  const [selectedType, setSelectedType] = useState("short");
+
+  function handleTypeChange(event) {
+    setSelectedType(event.target.value);
+    const selectedSession = sessions.find(
+      (session) => session.eventDistance === event.target.value
+    );
+    selectedSession;
+  }
+
   return (
-    <>
-      <div>
+    <div>
+      <h2>Choose your training days</h2>
+      <Days />
+      <form>
         <label>
+          Short
           <input
-            type="radio"
-            name="type"
+            type="checkbox"
             value="short"
             checked={selectedType === "short"}
             onChange={handleTypeChange}
           />
-          Short
         </label>
         <label>
+          Mid
           <input
-            type="radio"
-            name="type"
+            type="checkbox"
             value="mid"
             checked={selectedType === "mid"}
             onChange={handleTypeChange}
           />
-          Mid
         </label>
         <label>
+          Long
           <input
-            type="radio"
-            name="type"
+            type="checkbox"
             value="long"
             checked={selectedType === "long"}
             onChange={handleTypeChange}
           />
-          Long
         </label>
-      </div>
-      <div>
-        <h2>Choose your training days</h2>
-        <Days />
-        <Link
-          href="/addedDaysPage"
-          title="Create Plan"
-          onClick={handleCreatePlanClick}
-        >
-          Create Plan
-        </Link>
-      </div>
-    </>
+      </form>
+      <Link
+        href="/addedDaysPage"
+        title="Create Plan"
+        onClick={handleCreatePlanClick}
+      >
+        Create Plan
+      </Link>
+    </div>
   );
 }
