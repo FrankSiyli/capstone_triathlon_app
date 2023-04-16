@@ -60,39 +60,53 @@ export default function HomePage() {
     selectedSession;
   }
 
+  function handleDayToggle(day) {
+    toggleDay(day.id);
+    generateSessionsForDays(addedDays, sessions);
+  }
+
   return (
     <div>
-      <h2>Choose your training days</h2>
-      <Days />
+      <h2>Choose your event distance</h2>
       <form>
         <label>
-          Short
-          <input
-            type="checkbox"
-            value="short"
-            checked={selectedType === "short"}
-            onChange={handleTypeChange}
-          />
+          Short Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "short" ? "selected" : ""}
+            onClick={() => setSelectedType("short")}
+          >
+            {selectedType === "short" ? "Selected" : "Select"}
+          </button>
         </label>
+        <br />
+        <br />
         <label>
-          Mid
-          <input
-            type="checkbox"
-            value="mid"
-            checked={selectedType === "mid"}
-            onChange={handleTypeChange}
-          />
+          Middle Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "mid" ? "selected" : ""}
+            onClick={() => setSelectedType("mid")}
+          >
+            {selectedType === "mid" ? "Selected" : "Select"}
+          </button>
         </label>
+        <br />
+        <br />
         <label>
-          Long
-          <input
-            type="checkbox"
-            value="long"
-            checked={selectedType === "long"}
-            onChange={handleTypeChange}
-          />
+          Long Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "long" ? "selected" : ""}
+            onClick={() => setSelectedType("long")}
+          >
+            {selectedType === "long" ? "Selected" : "Select"}
+          </button>
         </label>
       </form>
+      <h2>Choose your training days</h2>
+      <Days filtered={true} onToggle={handleDayToggle} />
+
       <Link
         href="/addedDaysPage"
         title="Create Plan"
