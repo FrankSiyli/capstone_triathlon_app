@@ -1,9 +1,10 @@
 import Days from "../src/components/Days";
 import Link from "next/link";
 import useStore from "../src/store";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function HomePage() {
+  const [selectedType, setSelectedType] = useState("short");
   const { days, toggleDay, sessions } = useStore();
   const addedDays = days.filter((day) => day.added);
   useEffect(() => {
@@ -19,6 +20,9 @@ export default function HomePage() {
   }, [addedDays, toggleDay]);
   function handleCreatePlanClick() {
     generateSessionsForDays(addedDays, sessions);
+  }
+  function handleTypeChange(e) {
+    setSelectedType(e.target.value);
   }
 
   function generateSessionsForDays(days, sessions) {
@@ -47,16 +51,50 @@ export default function HomePage() {
   }
 
   return (
-    <div>
-      <h2>Choose your training days</h2>
-      <Days />
-      <Link
-        href="/addedDaysPage"
-        title="Create Plan"
-        onClick={handleCreatePlanClick}
-      >
-        Create Plan
-      </Link>
-    </div>
+    <>
+      <div>
+        <label>
+          <input
+            type="radio"
+            name="type"
+            value="short"
+            checked={selectedType === "short"}
+            onChange={handleTypeChange}
+          />
+          Short
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="type"
+            value="mid"
+            checked={selectedType === "mid"}
+            onChange={handleTypeChange}
+          />
+          Mid
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="type"
+            value="long"
+            checked={selectedType === "long"}
+            onChange={handleTypeChange}
+          />
+          Long
+        </label>
+      </div>
+      <div>
+        <h2>Choose your training days</h2>
+        <Days />
+        <Link
+          href="/addedDaysPage"
+          title="Create Plan"
+          onClick={handleCreatePlanClick}
+        >
+          Create Plan
+        </Link>
+      </div>
+    </>
   );
 }

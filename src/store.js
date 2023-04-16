@@ -10,6 +10,7 @@ const useStore = create(
         ...day,
         sessions: [],
       })),
+
       sessions: sessions,
       selectedSessionIndex: Math.floor(Math.random() * sessions.length),
       toggleDay: (dayId) => {
