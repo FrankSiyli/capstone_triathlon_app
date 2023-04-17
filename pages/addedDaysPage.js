@@ -43,7 +43,7 @@ function AddedDaysPage() {
                 {day.sessions.map((session, index) => (
                   <li key={uid()}>
                     <p>
-                      <span>{session.icon}</span>
+                      {/* <span>{session.icon}</span> */}
                       <span>{session.title}</span>
                       <button
                         onClick={() => toggleSessionDetails(day.id, index)}
