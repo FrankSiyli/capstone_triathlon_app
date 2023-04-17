@@ -10,7 +10,7 @@ export default function HomePage() {
 
   useEffect(() => {
     generateSessionsForDays(addedDays, sessions);
-  });
+  }, [addedDays, sessions]);
 
   function generateSessionsForDays(days) {
     days = days.filter((day) => day.added);
