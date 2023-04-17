@@ -4,26 +4,15 @@ import useStore from "../src/store";
 import { useState, useEffect } from "react";
 
 export default function HomePage() {
-  const { days, toggleDay, sessions, selectedSession } = useStore();
+  const { days, toggleDay, sessions } = useStore();
   const addedDays = days.filter((day) => day.added);
+  const [selectedType, setSelectedType] = useState("short");
 
   useEffect(() => {
-    generateSessionsForDays(addedDays, sessions);
-  });
+    generateSessionsForDays(addedDays);
+  }, [addedDays, selectedType]);
 
-  useEffect(() => {
-    addedDays.forEach((day) => {
-      if (!day.sessions.length) {
-        toggleDay(day.id);
-      }
-    });
-  }, [addedDays, toggleDay]);
-
-  function handleCreatePlanClick() {
-    generateSessionsForDays(addedDays, sessions);
-  }
-
-  function generateSessionsForDays(days, sessions) {
+  function generateSessionsForDays(days) {
     days.forEach((day) => {
       if (!day.added) {
         day.sessions = [];
@@ -34,7 +23,6 @@ export default function HomePage() {
             session.type !== day.type &&
             !day.sessions.includes(session)
         );
-
         const selectedSessions = [];
         for (let i = 0; i < 2; i++) {
           const randomIndex = Math.floor(
@@ -44,25 +32,18 @@ export default function HomePage() {
           selectedSessions.push(session);
           remainingSessions.splice(randomIndex, 1);
         }
-
         day.sessions = selectedSessions;
       }
     });
   }
 
-  const [selectedType, setSelectedType] = useState("short");
-
-  function handleTypeChange(event) {
-    setSelectedType(event.target.value);
-    const selectedSession = sessions.find(
-      (session) => session.eventDistance === event.target.value
-    );
-    selectedSession;
+  function handleCreatePlanClick() {
+    generateSessionsForDays(addedDays);
   }
 
   function handleDayToggle(day) {
     toggleDay(day.id);
-    generateSessionsForDays(addedDays, sessions);
+    generateSessionsForDays(addedDays);
   }
 
   return (
