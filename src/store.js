@@ -52,7 +52,7 @@ const useStore = create(
     }),
     {
       name: "days-storage",
-      storage: localStorage,
+      getStorage: () => localStorage,
     }
   )
 );
