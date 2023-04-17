@@ -6,6 +6,7 @@ function AddedDaysPage() {
   const { days } = useStore();
   const addedDays = days.filter((day) => day.added);
   const [showSessions, setShowSessions] = useState({});
+  const [showSessionDetails, setShowSessionDetails] = useState({});
 
   const toggleSessions = (dayId) => {
     setShowSessions((previousState) => ({
@@ -14,10 +15,13 @@ function AddedDaysPage() {
     }));
   };
 
-  const toggleDay = (dayId) => {
-    setShowSessions((previousState) => ({
+  const toggleSessionDetails = (dayId, sessionIndex) => {
+    setShowSessionDetails((previousState) => ({
       ...previousState,
-      [dayId]: false,
+      [dayId]: {
+        ...previousState[dayId],
+        [sessionIndex]: !previousState[dayId]?.[sessionIndex],
+      },
     }));
   };
 
@@ -35,10 +39,21 @@ function AddedDaysPage() {
             </h3>
             {showSessions[day.id] && (
               <ul>
-                {day.sessions.map((session) => (
+                {day.sessions.map((session, index) => (
                   <li key={session.id}>
-                    {session.icon}
-                    {session.title}
+                    <button onClick={() => toggleSessionDetails(day.id, index)}>
+                      {showSessionDetails[day.id]?.[index]
+                        ? "Hide Details"
+                        : "Show Details"}
+                    </button>
+                    <p>
+                      {session.icon} {session.title}
+                    </p>
+                    {showSessionDetails[day.id]?.[index] && (
+                      <div>
+                        <p>{session.details}</p>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
