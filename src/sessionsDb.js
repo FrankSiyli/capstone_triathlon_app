@@ -300,4 +300,44 @@ export const sessions = [
     details:
       "Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats",
   },
+  {
+    type: "stabilization",
+    subType: "",
+    eventDistance: "",
+    title: "Stabi-routine-4",
+    backgroundColor: "grey",
+    icon: "🏋️‍♀️",
+    details:
+      "Setu Bandhasana \n 2 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats ",
+  },
+  {
+    type: "stabilization",
+    subType: "",
+    eventDistance: "",
+    title: "Stabi-routine-5",
+    backgroundColor: "grey",
+    icon: "🏋️‍♀️",
+    details:
+      "Chakravakasana \n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Chakravakasana \n 1 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x squats",
+  },
+  {
+    type: "stabilization",
+    subType: "",
+    eventDistance: "",
+    title: "Stabi-routine-6",
+    backgroundColor: "grey",
+    icon: "🏋️‍♀️",
+    details:
+      "Utkatasana \n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x push ups",
+  },
+  {
+    type: "stabilization",
+    subType: "",
+    eventDistance: "",
+    title: "Stabi-routine-7",
+    backgroundColor: "grey",
+    icon: "🏋️‍♀️",
+    details:
+      "Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x sit-ups \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x push ups \n  ---------------------------------- \n Adho Mukha Svanasana\n 1 min \n  ---------------------------------- \n 10x squats \n  ---------------------------------- \n Utkatasana \n 1 min \n  ---------------------------------- \n 10x sit-ups",
+  },
 ];
