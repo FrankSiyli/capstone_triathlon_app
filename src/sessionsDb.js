@@ -273,7 +273,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "short",
     title: "Stabi-routine-1",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -283,7 +283,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "short",
     title: "Stabi-routine-2",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -293,7 +293,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "mid",
     title: "Stabi-routine-3",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -303,7 +303,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "mid",
     title: "Stabi-routine-4",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -313,7 +313,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "long",
     title: "Stabi-routine-5",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -323,7 +323,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "long",
     title: "Stabi-routine-6",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
@@ -333,7 +333,7 @@ export const sessions = [
   {
     type: "stabilization",
     subType: "",
-    eventDistance: "",
+    eventDistance: "long",
     title: "Stabi-routine-7",
     backgroundColor: "grey",
     icon: "🏋️‍♀️",
