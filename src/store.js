@@ -5,14 +5,14 @@ import { sessions } from "./sessionsDb";
 
 const useStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       days: days.map((day) => ({
         ...day,
         sessions: [],
       })),
       sessions: sessions,
       selectedSessionIndex: Math.floor(Math.random() * sessions.length),
-      selectedEventDistance: "short", // add new state variable
+      selectedEventDistance: "short",
       toggleDay: (dayId) => {
         set((state) => {
           const dayIndex = state.days.findIndex((day) => day.id === dayId);
@@ -26,7 +26,7 @@ const useStore = create(
           } else {
             const remainingSessions = state.sessions.filter(
               (session) =>
-                session.eventDistance === state.selectedEventDistance && // filter sessions based on selected event distance
+                session.eventDistance === state.selectedEventDistance &&
                 session.type !== selectedDay.type &&
                 !selectedDay.sessions.includes(session)
             );
@@ -49,7 +49,7 @@ const useStore = create(
       },
       setSelectedEventDistance: (eventDistance) => {
         set({ selectedEventDistance: eventDistance });
-      }, // add new function to update selected event distance
+      },
     }),
     {
       name: "days-storage",
