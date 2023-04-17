@@ -1,46 +1,28 @@
-import { useState } from "react";
-import FooterButton from "../src/components/Button/FooterButton";
+import FooterButton from "../src/components/FooterButton/";
 import useStore from "../src/store";
-
-const getTwoRandomSessions = (sessions) => {
-  const randomSessions = sessions.map(
-    () => sessions[Math.floor(Math.random() * sessions.length)]
-  );
-  const firstSession = { ...randomSessions[0], visible: false };
-  const remainingSessions = randomSessions.filter(
-    (session) => session.type !== firstSession.type
-  );
-  const secondSession = {
-    ...remainingSessions[Math.floor(Math.random() * remainingSessions.length)],
-    visible: false,
-  };
-  return [firstSession, secondSession];
-};
+import { useState } from "react";
+import { uid } from "uid";
 
 function AddedDaysPage() {
-  const { days, sessions } = useStore();
+  const { days } = useStore();
   const addedDays = days.filter((day) => day.added);
-  const [daySessions, setDaySessions] = useState({});
   const [showSessions, setShowSessions] = useState({});
-  const [showDetails, setShowDetails] = useState({});
+  const [showSessionDetails, setShowSessionDetails] = useState({});
+
   const toggleSessions = (dayId) => {
-    if (!daySessions[dayId]) {
-      const [firstSession, secondSession] = getTwoRandomSessions(sessions);
-      setDaySessions((prevState) => ({
-        ...prevState,
-        [dayId]: [firstSession, secondSession],
-      }));
-    }
     setShowSessions((previousState) => ({
       ...previousState,
       [dayId]: !previousState[dayId],
     }));
   };
 
-  const toggleDetails = (dayId, sessionTitle) => {
-    setShowDetails((previousState) => ({
+  const toggleSessionDetails = (dayId, sessionIndex) => {
+    setShowSessionDetails((previousState) => ({
       ...previousState,
-      [dayId + sessionTitle]: !previousState[dayId + sessionTitle],
+      [dayId]: {
+        ...previousState[dayId],
+        [sessionIndex]: !previousState[dayId]?.[sessionIndex],
+      },
     }));
   };
 
@@ -58,18 +40,21 @@ function AddedDaysPage() {
             </h3>
             {showSessions[day.id] && (
               <ul>
-                {daySessions[day.id]?.map((session) => (
-                  <li key={session.title}>
-                    <span>{session.icon}</span>
-                    {session.title}
-                    <button
-                      id="detailsButton"
-                      onClick={() => toggleDetails(day.id, session.title)}
-                    >
-                      {showDetails[day.id + session.title] ? "x" : "☰"}
-                    </button>
-                    {showDetails[day.id + session.title] && (
-                      <p>{session.details}</p>
+                {day.sessions.map((session, index) => (
+                  <li key={uid()}>
+                    <p>
+                      <span>{session.icon}</span>
+                      <span>{session.title}</span>
+                      <button
+                        onClick={() => toggleSessionDetails(day.id, index)}
+                      >
+                        {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
+                      </button>
+                    </p>
+                    {showSessionDetails[day.id]?.[index] && (
+                      <div>
+                        <p>{session.details}</p>
+                      </div>
                     )}
                   </li>
                 ))}
