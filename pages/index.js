@@ -13,6 +13,7 @@ export default function HomePage() {
   });
 
   function generateSessionsForDays(days) {
+    days = days.filter((day) => day.added);
     days.forEach((day) => {
       if (!day.added) {
         day.sessions = [];
