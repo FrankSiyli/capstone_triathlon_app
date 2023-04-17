@@ -40,7 +40,6 @@ const useStore = create(
               selectedSessions.push(session);
               remainingSessions.splice(randomIndex, 1);
             }
-
             selectedDay.sessions = selectedSessions;
           }
 
