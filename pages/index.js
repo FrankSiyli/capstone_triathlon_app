@@ -9,8 +9,8 @@ export default function HomePage() {
   const [selectedType, setSelectedType] = useState("short");
 
   useEffect(() => {
-    generateSessionsForDays(addedDays);
-  }, [addedDays, selectedType]);
+    generateSessionsForDays(addedDays, sessions);
+  });
 
   function generateSessionsForDays(days) {
     days.forEach((day) => {
