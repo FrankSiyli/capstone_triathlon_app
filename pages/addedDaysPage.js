@@ -1,6 +1,7 @@
 import FooterButton from "../src/components/FooterButton/";
 import useStore from "../src/store";
 import { useState } from "react";
+import { uid } from "uid";
 
 function AddedDaysPage() {
   const { days } = useStore();
@@ -40,9 +41,10 @@ function AddedDaysPage() {
             {showSessions[day.id] && (
               <ul>
                 {day.sessions.map((session, index) => (
-                  <li key={session.id}>
+                  <li key={uid()}>
                     <p>
-                      {session.icon} {session.title}
+                      <span>{session.icon}</span>
+                      <span>{session.title}</span>
                       <button
                         onClick={() => toggleSessionDetails(day.id, index)}
                       >
