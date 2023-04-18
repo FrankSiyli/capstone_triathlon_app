@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { days } from "./daysDb";
 import { sessions } from "./sessionsDb";
 
@@ -8,9 +8,8 @@ const useStore = create(
     (set) => ({
       days: days.map((day) => ({
         ...day,
-        sessions: [],
       })),
-      sessions: sessions,
+
       selectedSessionIndex: Math.floor(Math.random() * sessions.length),
       selectedEventDistance: "short",
       toggleDay: (dayId) => {
@@ -52,7 +51,7 @@ const useStore = create(
     }),
     {
       name: "days-storage",
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
