@@ -1,41 +1,44 @@
 import Days from "../src/components/Days";
 import Link from "next/link";
 import useStore from "../src/store";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function HomePage() {
   const { days, toggleDay, sessions } = useStore();
   const addedDays = days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
 
+  const generateSessionsForDays = useCallback(
+    (days) => {
+      days.forEach((day) => {
+        if (!day.added) {
+          day.sessions = [];
+        } else {
+          const remainingSessions = sessions.filter(
+            (session) =>
+              session.eventDistance === selectedType &&
+              session.type !== day.type &&
+              !day.sessions.includes(session)
+          );
+          const selectedSessions = [];
+          for (let i = 0; i < 2; i++) {
+            const randomIndex = Math.floor(
+              Math.random() * remainingSessions.length
+            );
+            const session = remainingSessions[randomIndex];
+            selectedSessions.push(session);
+            remainingSessions.splice(randomIndex, 1);
+          }
+          day.sessions = selectedSessions;
+        }
+      });
+    },
+    [selectedType, sessions]
+  );
+
   useEffect(() => {
     generateSessionsForDays(addedDays);
-  }, [addedDays, selectedType]);
-
-  function generateSessionsForDays(days) {
-    days.forEach((day) => {
-      if (!day.added) {
-        day.sessions = [];
-      } else {
-        const remainingSessions = sessions.filter(
-          (session) =>
-            session.eventDistance === selectedType &&
-            session.type !== day.type &&
-            !day.sessions.includes(session)
-        );
-        const selectedSessions = [];
-        for (let i = 0; i < 2; i++) {
-          const randomIndex = Math.floor(
-            Math.random() * remainingSessions.length
-          );
-          const session = remainingSessions[randomIndex];
-          selectedSessions.push(session);
-          remainingSessions.splice(randomIndex, 1);
-        }
-        day.sessions = selectedSessions;
-      }
-    });
-  }
+  }, [addedDays, selectedType, sessions, generateSessionsForDays]);
 
   function handleCreatePlanClick() {
     generateSessionsForDays(addedDays);
