@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 
 export default function HomePage() {
   const { days, toggleDay, sessions } = useStore();
-  const addedDays = days.filter((day) => day.added);
+  const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
   const generateSessionsForDays = useCallback(
     (days) => {
