@@ -9,39 +9,42 @@ export default function DistanceButtons({ selectedType, setSelectedType }) {
     <div>
       <h2>Choose your event distance</h2>
       <label>
-        Short Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "short" ? "selected" : ""}
-          onClick={() => handleButtonClick("short")}
-        >
-          {selectedType === "short" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Short Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "short" ? "selected" : ""}
+            onClick={() => handleButtonClick("short")}
+          >
+            {selectedType === "short" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
-      <br />
-      <br />
       <label>
-        Middle Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "mid" ? "selected" : ""}
-          onClick={() => handleButtonClick("mid")}
-        >
-          {selectedType === "mid" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Middle Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "mid" ? "selected" : ""}
+            onClick={() => handleButtonClick("mid")}
+          >
+            {selectedType === "mid" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
-      <br />
-      <br />
       <label>
-        Long Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "long" ? "selected" : ""}
-          onClick={() => handleButtonClick("long")}
-        >
-          {selectedType === "long" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Long Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "long" ? "selected" : ""}
+            onClick={() => handleButtonClick("long")}
+          >
+            {selectedType === "long" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
+      <hr />
     </div>
   );
 }

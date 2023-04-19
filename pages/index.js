@@ -68,7 +68,7 @@ export default function HomePage() {
         title="Create Plan"
         onClick={handleCreatePlanClick}
       >
-        Create Plan
+        <h2>Create Plan</h2>
       </Link>
     </div>
   );
