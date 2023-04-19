@@ -3,14 +3,13 @@ import Link from "next/link";
 import useStore from "../src/store";
 import { useState, useEffect, useCallback } from "react";
 import { sessions } from "../src/sessionsDb";
+import DistanceButtons from "../src/components/Buttons/DistanceButtons";
 
 export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-
   const [isLoading, setIsLoading] = useState(true);
-
   const generateSessionsForDays = useCallback(
     (days) => {
       days.forEach((day) => {
@@ -59,46 +58,11 @@ export default function HomePage() {
 
   return (
     <div>
-      <h2>Choose your event distance</h2>
-      <form>
-        <label>
-          Short Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "short" ? "selected" : ""}
-            onClick={() => setSelectedType("short")}
-          >
-            {selectedType === "short" ? "Selected" : "Select"}
-          </button>
-        </label>
-        <br />
-        <br />
-        <label>
-          Middle Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "mid" ? "selected" : ""}
-            onClick={() => setSelectedType("mid")}
-          >
-            {selectedType === "mid" ? "Selected" : "Select"}
-          </button>
-        </label>
-        <br />
-        <br />
-        <label>
-          Long Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "long" ? "selected" : ""}
-            onClick={() => setSelectedType("long")}
-          >
-            {selectedType === "long" ? "Selected" : "Select"}
-          </button>
-        </label>
-      </form>
-      <h2>Choose your training days</h2>
+      <DistanceButtons
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
       <Days onToggle={handleDayToggle} />
-
       <Link
         href="/addedDaysPage"
         title="Create Plan"

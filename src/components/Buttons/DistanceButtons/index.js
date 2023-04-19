@@ -1,31 +1,47 @@
-import { useState } from "react";
+import React from "react";
 
-function DistanceButtons({ onSelect }) {
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleButtonClick = (event) => {
-    const value = event.target.value;
-    setActiveButton(value);
-    onSelect(value);
+export default function DistanceButtons({ selectedType, setSelectedType }) {
+  const handleButtonClick = (type) => {
+    setSelectedType(type);
   };
 
   return (
-    <>
+    <div>
       <h2>Choose your event distance</h2>
-      <h3>Short Distance Tri</h3>
-      <button value="short" onClick={handleButtonClick}>
-        {activeButton === "short" ? "active" : "not active"}
-      </button>
-      <h3>Middle Distance Tri</h3>
-      <button value="mid" onClick={handleButtonClick}>
-        {activeButton === "mid" ? "active" : "not active"}
-      </button>
-      <h3> Long Distance Tri</h3>
-      <button value="long" onClick={handleButtonClick}>
-        {activeButton === "long" ? "active" : "not active"}
-      </button>
-    </>
+      <label>
+        Short Distance Triathlon
+        <button
+          type="button"
+          className={selectedType === "short" ? "selected" : ""}
+          onClick={() => handleButtonClick("short")}
+        >
+          {selectedType === "short" ? "Selected" : "Select"}
+        </button>
+      </label>
+      <br />
+      <br />
+      <label>
+        Middle Distance Triathlon
+        <button
+          type="button"
+          className={selectedType === "mid" ? "selected" : ""}
+          onClick={() => handleButtonClick("mid")}
+        >
+          {selectedType === "mid" ? "Selected" : "Select"}
+        </button>
+      </label>
+      <br />
+      <br />
+      <label>
+        Long Distance Triathlon
+        <button
+          type="button"
+          className={selectedType === "long" ? "selected" : ""}
+          onClick={() => handleButtonClick("long")}
+        >
+          {selectedType === "long" ? "Selected" : "Select"}
+        </button>
+      </label>
+    </div>
   );
 }
-
-export default DistanceButtons;
