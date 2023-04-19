@@ -2,15 +2,14 @@ import Days from "../src/components/Days";
 import Link from "next/link";
 import useStore from "../src/store";
 import { useState, useEffect, useCallback } from "react";
+import { sessions } from "../src/sessionsDb";
 
 export default function HomePage() {
-  const { days, toggleDay, sessions } = useStore();
+  const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
 
   const [isLoading, setIsLoading] = useState(true);
-
-
 
   const generateSessionsForDays = useCallback(
     (days) => {
@@ -34,7 +33,7 @@ export default function HomePage() {
         }
       });
     },
-    [selectedType, sessions]
+    [selectedType]
   );
 
   useEffect(() => {
