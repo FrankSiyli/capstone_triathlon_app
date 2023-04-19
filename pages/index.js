@@ -7,7 +7,6 @@ export default function HomePage() {
   const { days, toggleDay, sessions } = useStore();
   const addedDays = days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-
   const generateSessionsForDays = useCallback(
     (days) => {
       days.forEach((day) => {
