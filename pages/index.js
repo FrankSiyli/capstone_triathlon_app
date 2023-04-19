@@ -10,8 +10,9 @@ export default function HomePage() {
 
   useEffect(() => {
     generateSessionsForDays(addedDays);
-  }, [addedDays, selectedType]);
+  }, [addedDays, generateSessionsForDays, selectedType]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function generateSessionsForDays(days) {
     days.forEach((day) => {
       if (!day.added) {
