@@ -18,10 +18,7 @@ export default function HomePage() {
         day.sessions = [];
       } else {
         const remainingSessions = sessions.filter(
-          (session) =>
-            session.eventDistance === selectedType &&
-            session.type !== day.type &&
-            !day.sessions.includes(session)
+          (session) => session.eventDistance === selectedType && session.type
         );
         const selectedSessions = [];
         for (let i = 0; i < 2; i++) {
