@@ -1,49 +1,50 @@
-import { useState } from "react";
+import React from "react";
 
-export default function EventDistanceButtons({ onSelect }) {
-  const [selectedType, setSelectedType] = useState("short");
-
-  function handleTypeChange(event) {
-    setSelectedType(event.target.value);
-    onSelect(event.target.value);
-  }
+export default function EventDistances({ selectedType, setSelectedType }) {
+  const handleButtonClick = (type) => {
+    setSelectedType(type);
+  };
 
   return (
-    <form>
+    <div>
+      <h2>Choose your event distance</h2>
       <label>
-        Short Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "short" ? "selected" : ""}
-          onClick={() => handleTypeChange({ target: { value: "short" } })}
-        >
-          {selectedType === "short" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Short Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "short" ? "selected" : ""}
+            onClick={() => handleButtonClick("short")}
+          >
+            {selectedType === "short" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
-      <br />
-      <br />
       <label>
-        Middle Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "mid" ? "selected" : ""}
-          onClick={() => handleTypeChange({ target: { value: "mid" } })}
-        >
-          {selectedType === "mid" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Middle Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "mid" ? "selected" : ""}
+            onClick={() => handleButtonClick("mid")}
+          >
+            {selectedType === "mid" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
-      <br />
-      <br />
       <label>
-        Long Distance Triathlon
-        <button
-          type="button"
-          className={selectedType === "long" ? "selected" : ""}
-          onClick={() => handleTypeChange({ target: { value: "long" } })}
-        >
-          {selectedType === "long" ? "Selected" : "Select"}
-        </button>
+        <h3>
+          Long Distance Triathlon
+          <button
+            type="button"
+            className={selectedType === "long" ? "selected" : ""}
+            onClick={() => handleButtonClick("long")}
+          >
+            {selectedType === "long" ? "✅" : "❌"}
+          </button>
+        </h3>
       </label>
-    </form>
+      <hr />
+    </div>
   );
 }

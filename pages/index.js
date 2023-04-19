@@ -3,7 +3,7 @@ import Link from "next/link";
 import useStore from "../src/store";
 import { useState, useEffect, useCallback } from "react";
 import { sessions } from "../src/sessionsDb";
-import DistanceButtons from "../src/components/Buttons/DistanceButtons";
+import EventDistances from "../src/components/EventDistances";
 
 export default function HomePage() {
   const { days, toggleDay } = useStore();
@@ -58,7 +58,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <DistanceButtons
+      <EventDistances
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
