@@ -9,11 +9,14 @@ export default function HomePage() {
   const [selectedType, setSelectedType] = useState("short");
 
   useEffect(() => {
+
     generateSessionsForDays(addedDays);
   }, [addedDays, generateSessionsForDays, selectedType]);
 
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   function generateSessionsForDays(days) {
+    days = days.filter((day) => day.added);
     days.forEach((day) => {
       if (!day.added) {
         day.sessions = [];
