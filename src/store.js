@@ -8,9 +8,8 @@ const useStore = create(
     (set) => ({
       days: days.map((day) => ({
         ...day,
-        sessions: [],
       })),
-      sessions: sessions,
+
       selectedSessionIndex: Math.floor(Math.random() * sessions.length),
       selectedEventDistance: "short",
       toggleDay: (dayId) => {
