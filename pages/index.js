@@ -7,6 +7,11 @@ export default function HomePage() {
   const { days, toggleDay, sessions } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
+
+  const [isLoading, setIsLoading] = useState(true);
+
+
+
   const generateSessionsForDays = useCallback(
     (days) => {
       days.forEach((day) => {
@@ -33,8 +38,16 @@ export default function HomePage() {
   );
 
   useEffect(() => {
-    generateSessionsForDays(addedDays);
-  }, [addedDays, generateSessionsForDays]);
+    if (!isLoading && addedDays) {
+      generateSessionsForDays(addedDays);
+    }
+  }, [isLoading, addedDays, generateSessionsForDays]);
+
+  useEffect(() => {
+    if (days) {
+      setIsLoading(false);
+    }
+  }, [days]);
 
   function handleCreatePlanClick() {
     generateSessionsForDays(addedDays);
