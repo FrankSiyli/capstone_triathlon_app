@@ -42,15 +42,12 @@ function AddedDaysPage() {
               <ul>
                 {day.sessions.map((session, index) => (
                   <li key={uid()}>
-                    <p>
-                      {/* <span>{session.icon}</span> */}
-                      <span>{session.title}</span>
-                      <button
-                        onClick={() => toggleSessionDetails(day.id, index)}
-                      >
-                        {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
-                      </button>
-                    </p>
+                    <span>{session.icon}</span>
+                    <span>{session.title}</span>
+                    <button onClick={() => toggleSessionDetails(day.id, index)}>
+                      {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
+                    </button>
+
                     {showSessionDetails[day.id]?.[index] && (
                       <div>
                         <p>{session.details}</p>
