@@ -38,7 +38,7 @@ function AddedDaysPage() {
                 {showSessions[day.id] ? "x" : "☰"}
               </button>
             </h3>
-            {showSessions[day.id] && (
+            {day.sessions && showSessions[day.id] && (
               <ul>
                 {day.sessions.map((session, index) => (
                   <li key={uid()}>
@@ -47,6 +47,7 @@ function AddedDaysPage() {
                     <button onClick={() => toggleSessionDetails(day.id, index)}>
                       {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
                     </button>
+
                     {showSessionDetails[day.id]?.[index] && (
                       <div>
                         <p>{session.details}</p>
