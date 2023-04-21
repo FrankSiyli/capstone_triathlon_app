@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const SessionSchema = new mongoose.Schema({
+const { Schema } = mongoose;
+
+const sessionSchema = new Schema({
   type: { type: String },
   subType: { type: String },
   eventDistance: { type: String },
@@ -10,11 +12,7 @@ const SessionSchema = new mongoose.Schema({
   details: { type: String },
 });
 
-let Session;
-try {
-  Session = mongoose.model("Session");
-} catch {
-  Session = mongoose.model("Session", SessionSchema);
-}
+const Session =
+  mongoose.models.Session || mongoose.model("Session", sessionSchema);
 
 export default Session;
