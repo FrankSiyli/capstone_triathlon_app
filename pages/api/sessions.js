@@ -1,6 +1,5 @@
 import connect from "../../database/connect";
 import Session from "../../database/models/Session";
-import mongoose from "mongoose";
 
 export default async function handler(request, response) {
   await connect();
