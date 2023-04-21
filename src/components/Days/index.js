@@ -11,6 +11,10 @@ export default function Days({ filtered }) {
   });
   const toggleDay = useStore((state) => state.toggleDay);
 
+  const handleToggle = (day) => {
+    toggleDay(day.id);
+  };
+
   return (
     <>
       <h2>Choose your training days</h2>
@@ -19,7 +23,7 @@ export default function Days({ filtered }) {
           <div key={day.id}>
             <h3>
               {day.title}
-              <button onClick={() => toggleDay(day.id)}>
+              <button onClick={() => handleToggle(day)}>
                 {day.added ? "✅ " : "❌"}
               </button>
             </h3>
