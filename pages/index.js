@@ -5,20 +5,13 @@ import { useState } from "react";
 import useSWR from "swr";
 import EventDistances from "../src/components/EventDistances";
 
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
 export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-  const { sessions, error } = useSWR("/api/sessions", async (url) => {
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      console.log(data);
-      return data;
-    } catch (error) {
-      throw new Error("Error loading sessions");
-    }
-  });
+  const { data: sessions, error } = useSWR("/api/sessions", fetcher);
 
   function generateSessionsForDays() {
     if (sessions && addedDays) {
