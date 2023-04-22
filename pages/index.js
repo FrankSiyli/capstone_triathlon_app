@@ -11,7 +11,10 @@ export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-  const { data: sessions, error } = useSWR("/api/sessions", fetcher);
+  const { data: sessions, error } = useSWR(
+    "http://localhost:3000/api/sessions",
+    fetcher
+  );
 
   function generateSessionsForDays() {
     if (sessions && addedDays) {
