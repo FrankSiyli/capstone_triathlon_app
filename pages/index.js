@@ -9,18 +9,16 @@ export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-  const { data: sessions, error } = useSWR(
-    `https://${process.env.VERCEL_URL}/api/sessions`,
-    async (url) => {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        throw new Error("Error loading sessions");
-      }
+  const { sessions, error } = useSWR("/api/sessions", async (url) => {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      throw new Error("Error loading sessions");
     }
-  );
+  });
 
   function generateSessionsForDays() {
     if (sessions && addedDays) {
