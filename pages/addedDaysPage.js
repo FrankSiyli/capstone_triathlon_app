@@ -49,6 +49,7 @@ function AddedDaysPage() {
                     </button>
                     {showSessionDetails[day.id]?.[index] && (
                       <div>
+                        <h4>Details</h4>
                         <p>{session.details}</p>
                       </div>
                     )}
