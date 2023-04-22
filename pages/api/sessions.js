@@ -1,8 +1,8 @@
-import connect from "../../database/connect";
+import dbConnect from "../../database/dbConnect";
 import Session from "../../database/models/Session";
 
 export default async function handler(request, response) {
-  await connect();
+  await dbConnect();
 
   if (request.method === "GET") {
     const sessions = await Session.find();
