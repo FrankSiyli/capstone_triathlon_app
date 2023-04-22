@@ -9,7 +9,6 @@ export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-
   const { data: sessions, error } = useSWR("/api/sessions", async (url) => {
     try {
       const res = await fetch(url);
