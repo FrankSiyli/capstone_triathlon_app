@@ -3,13 +3,11 @@ import Link from "next/link";
 import useStore from "../src/store";
 import Days from "../src/components/Days";
 import EventDistances from "../src/components/EventDistances";
-import fetch from "isomorphic-unfetch";
 
-export default function HomePage() {
+export default function HomePage({ sessionsData }) {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-  const [sessionsData, setSessionsData] = useState(null);
 
   function generateSessionsForDays() {
     if (sessionsData && addedDays) {
@@ -45,17 +43,8 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    async function fetchSessions() {
-      const response = await fetch("/api/sessions");
-      const data = await response.json();
-      setSessionsData(data.sessions);
-    }
-    fetchSessions();
-  }, []);
-
-  if (!sessionsData) {
-    return <p>Loading sessions data...</p>;
-  }
+    generateSessionsForDays();
+  }, [selectedType]);
 
   return (
     <div>
@@ -73,4 +62,11 @@ export default function HomePage() {
       </Link>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const sessionsData = await dbConnect();
+  return {
+    props: { sessionsData },
+  };
 }
