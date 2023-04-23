@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import useStore from "../src/store";
 import Days from "../src/components/Days";
 import EventDistances from "../src/components/EventDistances";
-import fetch from "node-fetch";
+import fetch from "isomorphic-unfetch";
 
 export default function HomePage() {
   const { days, toggleDay } = useStore();
@@ -44,10 +44,16 @@ export default function HomePage() {
     generateSessionsForDays();
   }
 
+  useEffect(() => {
+    async function fetchSessions() {
+      const response = await fetch("/api/sessions");
+      const data = await response.json();
+      setSessionsData(data.sessions);
+    }
+    fetchSessions();
+  }, []);
+
   if (!sessionsData) {
-    fetch("/api/sessions")
-      .then((response) => response.json())
-      .then((data) => setSessionsData(data.sessions));
     return <p>Loading sessions data...</p>;
   }
 
