@@ -2,16 +2,13 @@ import Days from "../src/components/Days";
 import Link from "next/link";
 import useStore from "../src/store";
 import { useState } from "react";
-import useSWR from "swr";
 import EventDistances from "../src/components/EventDistances";
-
-const fetcher = (url) => fetch(url).then((r) => r.json());
+import sessions from "./api/sessions";
 
 export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
-  const { data: sessions, error } = useSWR("/api/sessions", fetcher);
 
   function generateSessionsForDays() {
     if (sessions && addedDays) {
@@ -52,11 +49,7 @@ export default function HomePage() {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
-      {error ? (
-        <p>Error loading sessions data</p>
-      ) : !sessions ? (
-        <p>Loading sessions data...</p>
-      ) : (
+      {sessions ? (
         <>
           <Days onToggle={handleDayToggle} />
           <Link
@@ -67,6 +60,8 @@ export default function HomePage() {
             <h2>Create Plan</h2>
           </Link>
         </>
+      ) : (
+        <p>Loading sessions data...</p>
       )}
     </div>
   );
