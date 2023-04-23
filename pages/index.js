@@ -1,22 +1,23 @@
-import Days from "../src/components/Days";
+import { useState } from "react";
 import Link from "next/link";
 import useStore from "../src/store";
-import { useState } from "react";
+import Days from "../src/components/Days";
 import EventDistances from "../src/components/EventDistances";
-import sessions from "./api/sessions";
+import fetch from "node-fetch";
 
 export default function HomePage() {
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
+  const [sessionsData, setSessionsData] = useState(null);
 
   function generateSessionsForDays() {
-    if (sessions && addedDays) {
+    if (sessionsData && addedDays) {
       addedDays.forEach((day) => {
         if (!day.added) {
           day.sessions = [];
         } else {
-          const remainingSessions = sessions.filter(
+          const remainingSessions = sessionsData.filter(
             (session) => session.eventDistance === selectedType && session.type
           );
           const selectedSessions = [];
@@ -43,26 +44,27 @@ export default function HomePage() {
     generateSessionsForDays();
   }
 
+  if (!sessionsData) {
+    fetch("/api/sessions")
+      .then((response) => response.json())
+      .then((data) => setSessionsData(data.sessions));
+    return <p>Loading sessions data...</p>;
+  }
+
   return (
     <div>
       <EventDistances
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
-      {sessions ? (
-        <>
-          <Days onToggle={handleDayToggle} />
-          <Link
-            href="/addedDaysPage"
-            title="Create Plan"
-            onClick={handleCreatePlanClick}
-          >
-            <h2>Create Plan</h2>
-          </Link>
-        </>
-      ) : (
-        <p>Loading sessions data...</p>
-      )}
+      <Days onToggle={handleDayToggle} />
+      <Link
+        href="/addedDaysPage"
+        title="Create Plan"
+        onClick={handleCreatePlanClick}
+      >
+        <h2>Create Plan</h2>
+      </Link>
     </div>
   );
 }
