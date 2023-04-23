@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import useStore from "../src/store";
 import Days from "../src/components/Days";
@@ -9,7 +9,7 @@ export default function HomePage({ sessionsData }) {
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
 
-  function generateSessionsForDays() {
+  const generateSessionsForDays = useCallback(() => {
     if (sessionsData && addedDays) {
       addedDays.forEach((day) => {
         if (!day.added) {
@@ -31,7 +31,7 @@ export default function HomePage({ sessionsData }) {
         }
       });
     }
-  }
+  }, [sessionsData, addedDays, selectedType]);
 
   function handleCreatePlanClick() {
     generateSessionsForDays();
@@ -44,7 +44,7 @@ export default function HomePage({ sessionsData }) {
 
   useEffect(() => {
     generateSessionsForDays();
-  }, [selectedType]);
+  }, [generateSessionsForDays]);
 
   return (
     <div>
