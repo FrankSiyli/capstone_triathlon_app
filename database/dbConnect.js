@@ -1,23 +1,19 @@
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.MONGODB_DB;
 
-let cachedClient;
 let cachedDb;
 
-export default async function dbConnect() {
+async function dbConnect() {
   // check the cached.
-  if (cachedClient && cachedDb) {
+  if (cachedDb) {
     // load from cache
-    return {
-      client: cachedClient,
-      db: cachedDb,
-    };
+    return cachedDb;
   }
 
   // set the connection options
-  const opts = {
+  const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
@@ -31,17 +27,16 @@ export default async function dbConnect() {
     throw new Error("Define the MONGODB_DB environmental variable");
   }
 
-  // Connect to cluster
-  let client = new MongoClient(MONGODB_URI);
-  await client.connect();
-  let db = client.db(MONGODB_DB);
+  // Connect to database
+  const db = await mongoose.connect(MONGODB_URI, {
+    ...options,
+    dbName: MONGODB_DB,
+  });
 
   // set cache
-  cachedClient = client;
   cachedDb = db;
 
-  return {
-    client: cachedClient,
-    db: cachedDb,
-  };
+  return cachedDb;
 }
+
+export default dbConnect;
