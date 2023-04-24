@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function EventDistances({ selectedType, setSelectedType }) {
   const handleButtonClick = (type) => {
     setSelectedType(type);
