@@ -3,19 +3,24 @@ import Link from "next/link";
 import useStore from "../src/store";
 import Days from "../src/components/Days";
 import EventDistances from "../src/components/EventDistances";
+import useSWR from "swr";
 
-export default function HomePage({ sessionsData }) {
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function HomePage({}) {
+  const { data: sessions, error } = useSWR("/api/sessions", fetcher);
+
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
 
   const generateSessionsForDays = useCallback(() => {
-    if (sessionsData && addedDays) {
+    if (sessions && addedDays) {
       addedDays.forEach((day) => {
         if (!day.added) {
           day.sessions = [];
         } else {
-          const remainingSessions = sessionsData.filter(
+          const remainingSessions = sessions.filter(
             (session) => session.eventDistance === selectedType && session.type
           );
           const selectedSessions = [];
@@ -31,7 +36,7 @@ export default function HomePage({ sessionsData }) {
         }
       });
     }
-  }, [sessionsData, addedDays, selectedType]);
+  }, [sessions, addedDays, selectedType]);
 
   function handleCreatePlanClick() {
     generateSessionsForDays();
@@ -62,11 +67,4 @@ export default function HomePage({ sessionsData }) {
       </Link>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const sessionsData = await dbConnect();
-  return {
-    props: { sessionsData },
-  };
 }
