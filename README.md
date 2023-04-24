@@ -8,9 +8,13 @@
 ### used Tech Stack: React, NEXT.js, MongoDB (Atlas, Compass, Postman),  Kanban, SCRUM 
 <br>
 and a lot of Dev-Ops stuff: 
+<br>
 - git filter-branch for deleting Git and Github history
+<br>
 - played a lot with VSCode Source control
+<br>
 - tested different fetching libraries by using different Node versions
+<br>
 - played with deployments in Vercel and Netlify
 
 ### CodeSandbox
