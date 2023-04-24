@@ -11,18 +11,26 @@ export default function Days({ filtered }) {
   });
   const toggleDay = useStore((state) => state.toggleDay);
 
+  const handleToggle = (day) => {
+    toggleDay(day.id);
+  };
+
   return (
     <>
+      <h2>Choose your training days</h2>
       {days.map((day) => {
         return (
           <div key={day.id}>
-            <p>{day.title}</p>
-            <button onClick={() => toggleDay(day.id)}>
-              {day.added ? "selected " : "not selected"}
-            </button>
+            <h3>
+              {day.title}
+              <button onClick={() => handleToggle(day)}>
+                {day.added ? "✅ " : "❌"}
+              </button>
+            </h3>
           </div>
         );
       })}
+      <hr />
     </>
   );
 }

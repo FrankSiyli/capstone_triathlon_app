@@ -47,9 +47,9 @@ function AddedDaysPage() {
                     <button onClick={() => toggleSessionDetails(day.id, index)}>
                       {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
                     </button>
-
                     {showSessionDetails[day.id]?.[index] && (
                       <div>
+                        <h4>Details</h4>
                         <p>{session.details}</p>
                       </div>
                     )}

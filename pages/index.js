@@ -1,19 +1,22 @@
-import Days from "../src/components/Days";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import useStore from "../src/store";
-import { useState, useEffect, useCallback } from "react";
-import { sessions } from "../src/sessionsDb";
+import Days from "../src/components/Days";
+import EventDistances from "../src/components/EventDistances";
+import useSWR from "swr";
 
-export default function HomePage() {
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function HomePage({}) {
+  const { data: sessions, error } = useSWR("/api/sessions", fetcher);
+
   const { days, toggleDay } = useStore();
   const addedDays = days && days.filter((day) => day.added);
   const [selectedType, setSelectedType] = useState("short");
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  const generateSessionsForDays = useCallback(
-    (days) => {
-      days.forEach((day) => {
+  const generateSessionsForDays = useCallback(() => {
+    if (sessions && addedDays) {
+      addedDays.forEach((day) => {
         if (!day.added) {
           day.sessions = [];
         } else {
@@ -32,79 +35,35 @@ export default function HomePage() {
           day.sessions = selectedSessions;
         }
       });
-    },
-    [selectedType]
-  );
-
-  useEffect(() => {
-    if (!isLoading && addedDays) {
-      generateSessionsForDays(addedDays);
     }
-  }, [isLoading, addedDays, generateSessionsForDays]);
-
-  useEffect(() => {
-    if (days) {
-      setIsLoading(false);
-    }
-  }, [days]);
+  }, [sessions, addedDays, selectedType]);
 
   function handleCreatePlanClick() {
-    generateSessionsForDays(addedDays);
+    generateSessionsForDays();
   }
 
   function handleDayToggle(day) {
     toggleDay(day.id);
-    generateSessionsForDays(addedDays);
+    generateSessionsForDays();
   }
+
+  useEffect(() => {
+    generateSessionsForDays();
+  }, [generateSessionsForDays]);
 
   return (
     <div>
-      <h2>Choose your event distance</h2>
-      <form>
-        <label>
-          Short Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "short" ? "selected" : ""}
-            onClick={() => setSelectedType("short")}
-          >
-            {selectedType === "short" ? "Selected" : "Select"}
-          </button>
-        </label>
-        <br />
-        <br />
-        <label>
-          Middle Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "mid" ? "selected" : ""}
-            onClick={() => setSelectedType("mid")}
-          >
-            {selectedType === "mid" ? "Selected" : "Select"}
-          </button>
-        </label>
-        <br />
-        <br />
-        <label>
-          Long Distance Triathlon
-          <button
-            type="button"
-            className={selectedType === "long" ? "selected" : ""}
-            onClick={() => setSelectedType("long")}
-          >
-            {selectedType === "long" ? "Selected" : "Select"}
-          </button>
-        </label>
-      </form>
-      <h2>Choose your training days</h2>
+      <EventDistances
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+      />
       <Days onToggle={handleDayToggle} />
-
       <Link
         href="/addedDaysPage"
         title="Create Plan"
         onClick={handleCreatePlanClick}
       >
-        Create Plan
+        <h2>Create Plan</h2>
       </Link>
     </div>
   );
