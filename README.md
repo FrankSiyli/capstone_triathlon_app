@@ -5,7 +5,13 @@
 
 ## Development
 
-### Tech Stack:React, NEXT.js, Kanban, SCRUM
+### used Tech Stack: React, NEXT.js, MongoDB (Atlas, Compass, Postman),  Kanban, SCRUM 
+<br>
+and a lot of Dev-Ops stuff: 
+- git filter-branch for deleting Git and Github history
+- played a lot with VSCode Source control
+- tested different fetching libraries by using different Node versions
+- played with deployments in Vercel and Netlify
 
 ### CodeSandbox
 
