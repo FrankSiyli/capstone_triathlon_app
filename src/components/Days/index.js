@@ -1,13 +1,7 @@
-import useStore from "../../store";
+import useStore, { daysArray } from "../../store";
 
 export default function Days({ filtered }) {
-  const days = useStore((state) => {
-    if (filtered) {
-      return state.days.filter((day) => day.added);
-    } else {
-      return state.days;
-    }
-  });
+  const days = filtered ? daysArray.filter((day) => day.added) : daysArray;
   const toggleDay = useStore((state) => state.toggleDay);
 
   const handleToggle = (day) => {
