@@ -1,4 +1,3 @@
-import React from "react";
 import useStore from "../../store";
 
 export default function Days({ filtered }) {
@@ -18,18 +17,19 @@ export default function Days({ filtered }) {
   return (
     <>
       <h2>Choose your training days</h2>
-      {days.map((day) => {
-        return (
-          <div key={day.id}>
-            <h3>
-              {day.title}
-              <button onClick={() => handleToggle(day)}>
-                {day.added ? "✅ " : "❌"}
-              </button>
-            </h3>
-          </div>
-        );
-      })}
+      {days &&
+        days.map((day) => {
+          return (
+            <div key={day.id}>
+              <h3>
+                {day.title}
+                <button onClick={() => handleToggle(day)}>
+                  {day.added ? "✅ " : "❌"}
+                </button>
+              </h3>
+            </div>
+          );
+        })}
       <hr />
     </>
   );
