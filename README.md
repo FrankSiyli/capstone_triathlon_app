@@ -9,13 +9,15 @@
 <br>
 and a lot of Dev-Ops stuff: 
 <br>
-- git filter-branch for deleting Git and Github history
+- git filter-branch for deleting parts of the Git and Github history
 <br>
 - played a lot with VSCode Source control
 <br>
 - tested different fetching libraries by using different Node versions
 <br>
 - played with deployments in Vercel and Netlify
+<br>
+- git push from different devices on the same repository
 
 ### CodeSandbox
 
