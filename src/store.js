@@ -28,5 +28,6 @@ const useStore = create(
     }
   )
 );
+export const daysArray = useStore.getState().days;
 
 export default useStore;
