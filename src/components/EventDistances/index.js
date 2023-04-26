@@ -9,8 +9,8 @@ export default function EventDistances({ selectedType, setSelectedType }) {
   return (
     <>
       <HeadingH3 headingH3Title={"Choose your event distance"} />
-      <article className="border1">
-        <section className="border2">
+      <article className="article-container">
+        <section className="section-container">
           <HeadingH4 headingH4Title={"Short Distance Triathlon"} />
           <button
             type="button"
@@ -20,7 +20,7 @@ export default function EventDistances({ selectedType, setSelectedType }) {
             {selectedType === "short" ? "✅" : "❌"}
           </button>
         </section>
-        <section className="border2">
+        <section className="section-container">
           <HeadingH4 headingH4Title={"Middle Distance Triathlon"} />{" "}
           <button
             type="button"
@@ -30,7 +30,7 @@ export default function EventDistances({ selectedType, setSelectedType }) {
             {selectedType === "mid" ? "✅" : "❌"}
           </button>
         </section>
-        <section className="border2">
+        <section className="section-container">
           <HeadingH4 headingH4Title={"Long Distance Triathlon"} />{" "}
           <button
             type="button"

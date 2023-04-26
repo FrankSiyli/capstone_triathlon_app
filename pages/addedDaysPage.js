@@ -32,9 +32,9 @@ function AddedDaysPage() {
     <>
       <main>
         <HeadingH3 headingH3Title={"Your Training Days"} />
-        <article className="border1">
+        <article className="article-container">
           {addedDays.map((day) => (
-            <section className="border2" key={day.id}>
+            <section className="section-container" key={day.id}>
               <HeadingH4 headingH4Title={day.title} />
               <button onClick={() => toggleSessions(day.id)}>
                 {showSessions[day.id] ? "❌" : "❎"}

@@ -13,12 +13,12 @@ export default function Days({ filtered }) {
   return (
     <>
       <HeadingH3 headingH3Title={"Choose your training days"} />
-      <article className="border1">
+      <article className="article-container">
         {days &&
           days.map((day) => {
             return (
               <div key={day.id}>
-                <section className="border2">
+                <section className="section-container">
                   <HeadingH4 headingH4Title={day.title} />
                   <button onClick={() => handleToggle(day)}>
                     {day.added ? "✅ " : "❌"}

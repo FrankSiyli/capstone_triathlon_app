@@ -16,6 +16,7 @@ export default createGlobalStyle`
         white-space: pre-line;  
   }
 
+  
   main {
     color: #333333;
     display: flex;
@@ -26,7 +27,7 @@ export default createGlobalStyle`
     margin-bottom: 2rem;
   }
 
-  .border1 {
+  .article-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,12 +37,13 @@ export default createGlobalStyle`
     width: 97vw;
     margin: 2%;
   }
-  .border2 {
+  .section-container {
     position: relative;
     border: 1px solid #ffbb1b;
     width: 97vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .details-list {
@@ -49,6 +51,8 @@ export default createGlobalStyle`
     flex-direction: column;
     padding: 0;
     margin: 0;
+    width: 92vw;
+
     li {
       list-style: none;  
       padding: 0.5rem;
