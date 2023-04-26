@@ -1,14 +1,17 @@
+import HeadingH3 from "../HeadingH3";
+import HeadingH4 from "../HeadingH4";
+
 export default function EventDistances({ selectedType, setSelectedType }) {
   const handleButtonClick = (type) => {
     setSelectedType(type);
   };
 
   return (
-    <div>
-      <h2>Choose your event distance</h2>
-      <label>
-        <h3>
-          Short Distance Triathlon
+    <>
+      <HeadingH3 headingH3Title={"Choose your event distance"} />
+      <article className="article-container">
+        <section className="section-container">
+          <HeadingH4 headingH4Title={"Short Distance Triathlon"} />
           <button
             type="button"
             className={selectedType === "short" ? "selected" : ""}
@@ -16,11 +19,9 @@ export default function EventDistances({ selectedType, setSelectedType }) {
           >
             {selectedType === "short" ? "✅" : "❌"}
           </button>
-        </h3>
-      </label>
-      <label>
-        <h3>
-          Middle Distance Triathlon
+        </section>
+        <section className="section-container">
+          <HeadingH4 headingH4Title={"Middle Distance Triathlon"} />{" "}
           <button
             type="button"
             className={selectedType === "mid" ? "selected" : ""}
@@ -28,11 +29,9 @@ export default function EventDistances({ selectedType, setSelectedType }) {
           >
             {selectedType === "mid" ? "✅" : "❌"}
           </button>
-        </h3>
-      </label>
-      <label>
-        <h3>
-          Long Distance Triathlon
+        </section>
+        <section className="section-container">
+          <HeadingH4 headingH4Title={"Long Distance Triathlon"} />{" "}
           <button
             type="button"
             className={selectedType === "long" ? "selected" : ""}
@@ -40,9 +39,8 @@ export default function EventDistances({ selectedType, setSelectedType }) {
           >
             {selectedType === "long" ? "✅" : "❌"}
           </button>
-        </h3>
-      </label>
-      <hr />
-    </div>
+        </section>
+      </article>
+    </>
   );
 }

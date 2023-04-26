@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
-import Link from "next/link";
 import useStore from "../src/store";
 import Days from "../src/components/Days";
 import EventDistances from "../src/components/EventDistances";
 import useSWR from "swr";
+import Footer from "../src/components/Footer";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -46,25 +46,28 @@ export default function HomePage({}) {
     toggleDay(day.id);
     generateSessionsForDays();
   }
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   useEffect(() => {
     generateSessionsForDays();
   }, [generateSessionsForDays]);
 
   return (
-    <div>
-      <EventDistances
-        selectedType={selectedType}
-        setSelectedType={setSelectedType}
+    <>
+      <main>
+        <EventDistances
+          selectedType={selectedType}
+          setSelectedType={setSelectedType}
+        />
+        <Days onToggle={handleDayToggle} />
+      </main>
+      <Footer
+        handleCreatePlanClick={handleCreatePlanClick}
+        href={"/addedDaysPage"}
+        title={"Create Plan"}
       />
-      <Days onToggle={handleDayToggle} />
-      <Link
-        href="/addedDaysPage"
-        title="Create Plan"
-        onClick={handleCreatePlanClick}
-      >
-        <h2>Create Plan</h2>
-      </Link>
-    </div>
+    </>
   );
 }

@@ -1,7 +1,9 @@
-import FooterButton from "../src/components/FooterButton/";
+import Footer from "../src/components/Footer";
 import useStore from "../src/store";
 import { useState } from "react";
 import { uid } from "uid";
+import HeadingH3 from "../src/components/HeadingH3";
+import HeadingH4 from "../src/components/HeadingH4";
 
 function AddedDaysPage() {
   const { days } = useStore();
@@ -28,39 +30,44 @@ function AddedDaysPage() {
 
   return (
     <>
-      <div>
-        <h2>Your Training Days</h2>
-        {addedDays.map((day) => (
-          <div key={day.id}>
-            <h3>
-              {day.title}
+      <main>
+        <HeadingH3 headingH3Title={"Your Training Days"} />
+        <article className="article-container">
+          {addedDays.map((day) => (
+            <section className="section-container" key={day.id}>
+              <HeadingH4 headingH4Title={day.title} />
               <button onClick={() => toggleSessions(day.id)}>
-                {showSessions[day.id] ? "x" : "☰"}
+                {showSessions[day.id] ? "❌" : "❎"}
               </button>
-            </h3>
-            {day.sessions && showSessions[day.id] && (
-              <ul>
-                {day.sessions.map((session, index) => (
-                  <li key={uid()}>
-                    <span>{session.icon}</span>
-                    <span>{session.title}</span>
-                    <button onClick={() => toggleSessionDetails(day.id, index)}>
-                      {showSessionDetails[day.id]?.[index] ? "x" : "☰"}
-                    </button>
-                    {showSessionDetails[day.id]?.[index] && (
-                      <div>
-                        <h4>Details</h4>
-                        <p>{session.details}</p>
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-        <FooterButton href="/" title="Back" />
-      </div>
+              <section className="details-list">
+                {day.sessions && showSessions[day.id] && (
+                  <ul className="details-list">
+                    {day.sessions.map((session, index) => (
+                      <li key={uid()}>
+                        <span>
+                          {session.icon}
+                          {session.title}
+                        </span>
+                        <button
+                          onClick={() => toggleSessionDetails(day.id, index)}
+                        >
+                          {showSessionDetails[day.id]?.[index] ? "❌" : "❎"}
+                        </button>
+                        {showSessionDetails[day.id]?.[index] && (
+                          <div className="session-details">
+                            <p>{session.details}</p>
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            </section>
+          ))}
+        </article>
+      </main>
+      <Footer href="/" title="Back" />
     </>
   );
 }
