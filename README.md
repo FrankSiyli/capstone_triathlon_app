@@ -5,7 +5,7 @@
 
 ## Development
 
-### used Tech Stack: React, NEXT.js, Zustand for state management, MongoDB (Atlas, Compass, Postman),  React testing library, Kanban, SCRUM 
+### used Tech Stack: React, NEXT.js, Node.js, Zustand, SWR, MongoDB (Atlas, Compass, Postman),  React testing library
 <br>
 and a lot of Dev-Ops stuff: 
 <br>
