@@ -5,17 +5,15 @@
 
 ## Development
 
-### used Tech Stack: React, NEXT.js, Zustand for state management, MongoDB (Atlas, Compass, Postman),  React test library for testing, Kanban, SCRUM 
+### used Tech Stack: React, NEXT.js, Zustand for state management, MongoDB (Atlas, Compass, Postman),  React testing library, Kanban, SCRUM 
 <br>
 and a lot of Dev-Ops stuff: 
 <br>
 - git filter-branch for deleting parts of the Git and Github history
 <br>
-- played a lot with VSCode Source control
+- VSCode Source control
 <br>
 - tested different fetching libraries by using different Node versions
-<br>
-- played with deployments in Vercel and Netlify
 <br>
 - git push from different devices on the same repository
 
