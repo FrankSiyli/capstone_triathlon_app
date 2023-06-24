@@ -51,7 +51,7 @@ function AddedDaysPage() {
                         <button
                           onClick={() => toggleSessionDetails(day.id, index)}
                         >
-                          {showSessionDetails[day.id]?.[index] ? "❌" : "❎"}
+                          {showSessionDetails[day.id]?.[index] ? "❌" : "✅"}
                         </button>
                         {showSessionDetails[day.id]?.[index] && (
                           <div className="session-details">

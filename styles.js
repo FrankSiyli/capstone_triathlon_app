@@ -90,5 +90,6 @@ export default createGlobalStyle`
     background: none;
     border: none;
     font-size: 1.7rem;
+    cursor: pointer;
   }
 `;
