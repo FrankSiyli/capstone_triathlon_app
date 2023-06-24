@@ -55,6 +55,8 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     width: 92vw;
+    max-width: 600px;
+
 
     li {
       list-style: none;  
