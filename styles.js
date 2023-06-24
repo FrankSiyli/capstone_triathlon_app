@@ -36,6 +36,7 @@ export default createGlobalStyle`
     border-radius: 5px;
     width: 97vw;
     margin: 2%;
+    max-width: 600px;
   }
   .section-container {
     position: relative;
@@ -44,6 +45,8 @@ export default createGlobalStyle`
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 600px;
+
   }
 
   .details-list {
