@@ -37,7 +37,7 @@ function AddedDaysPage() {
             <section className="section-container" key={day.id}>
               <HeadingH4 headingH4Title={day.title} />
               <button onClick={() => toggleSessions(day.id)}>
-                {showSessions[day.id] ? "❌" : " ✅"}
+                {showSessions[day.id] ? "❌" : " ≡"}
               </button>
               <section className="details-list">
                 {day.sessions && showSessions[day.id] && (
@@ -51,7 +51,7 @@ function AddedDaysPage() {
                         <button
                           onClick={() => toggleSessionDetails(day.id, index)}
                         >
-                          {showSessionDetails[day.id]?.[index] ? "❌" : "✅"}
+                          {showSessionDetails[day.id]?.[index] ? "❌" : "≡"}
                         </button>
                         {showSessionDetails[day.id]?.[index] && (
                           <div className="session-details">
