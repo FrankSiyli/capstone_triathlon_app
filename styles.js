@@ -7,6 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+
+* ::-webkit-scrollbar {
+  display: none;
+}
+
   body {
         background-color: #FFFFFF;
         position: relative;
