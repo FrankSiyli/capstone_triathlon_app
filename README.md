@@ -7,15 +7,6 @@
 
 ### used Tech Stack: React, NEXT.js, Node.js, Zustand, SWR, MongoDB (Atlas, Compass, Postman),  React testing library, Styled Components
 <br>
-and a lot of Dev-Ops stuff: 
-<br>
-- git filter-branch for deleting parts of the Git and Github history
-<br>
-- VSCode Source control
-<br>
-- tested different fetching libraries by using different Node versions
-<br>
-- git push from different devices on the same repository
 
 ### CodeSandbox
 
